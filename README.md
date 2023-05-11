@@ -1,4 +1,4 @@
-## Tabel名
+<!-- ## Tabel名
 
 ## users テーブル
 
@@ -70,4 +70,4 @@
 
 - has_one :users
 - has_one :product_information
-- has_one :purchase_records
+- has_one :purchase_records -->
