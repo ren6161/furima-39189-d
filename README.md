@@ -5,7 +5,7 @@
 | Column              | Type   | Options     |
 | ------------------  | ------ | ----------- |
 | user_name           | string | null: false |
-| email               | string | unique: true |
+| email               | string | null: false,unique: true |
 | encrypted_password  | string | null: false |
 | last_name           | string | null: false |
 | first_name          | string | null: false |
@@ -59,8 +59,7 @@
 | block_number    | string  | null: false |
 | apartment_name  | string  |             |
 | phone_number    | string  | null: false |
-| user            | references | null: false,foreign_key: true |
-| product_information | references | null: false,foreign_key: true |
+| purchase_record | references | null: false,foreign_key: true |
 
 ### Association
 
