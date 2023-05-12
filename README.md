@@ -5,9 +5,8 @@
 | Column              | Type   | Options     |
 | ------------------  | ------ | ----------- |
 | user_name           | string | null: false |
-| Email_address       | string | null: false |
-| password            | string | null: false |
-| confirm_password    | string | null: false |
+| email               | string | null: false |
+| encrypted_password  | string | null: false |
 | last_name           | string | null: false |
 | first_name          | string | null: false |
 | last_name_kana      | string | null: false |
@@ -18,27 +17,25 @@
 
 - has_many  :product_information
 - has_many  :purchase_records
-- has_one   :shipping_address
 
 ## product_information  テーブル
 
-| Column         | Type    | Options     |
-| -------------  | ------  | ----------- |
-| name           | string  | null: false |
-| description    | text    | null: false |
-| category       | string  | null: false |
-| condition      | string  | null: false |
-| shipping_cost  | string  | null: false |
-| shipping_area  | string  | null: false |
-| price          | integer | null: false |
-| exhibitor      | string  | null: false,foreign_key: true |
-| days_to_ship   | string  | null: false |
+| Column            | Type        | Options     |
+| ----------------- | ----------- | ----------- |
+| name              | string      | null: false |
+| description       | text        | null: false |
+| category_id       | integer     | null: false |
+| condition_id      | integer     | null: false |
+| shipping_cost_id  | integer     | null: false |
+| shipping_area_id  | integer     | null: false |
+| price             | integer     | null: false |
+| user              | references  | null: false,foreign_key: true |
+| days_to_ship_id   | integer     | null: false |
 
 ### Association
 
-- has_one  :users
-- has_one  :purchase_records
-- has_one  :shipping_address
+- belongs_to :users
+- has_one    :purchase_records
 
 ## purchase_records  テーブル
 
@@ -51,23 +48,21 @@
 
 ### Association
 
-- has_one  :users
-- has_one  :product_information
-- has_one  :shipping_address
+- belongs_to  :users
+- belongs_to  :product_information
+- has_one     :shipping_address
 
 ## shipping_address  テーブル
 
 | Column          | Type    | Options                        |
 | --------------  | ------- | ------------------------------ |
-| postal_code     | integer | null: false |
-| prefecture      | string  | null: false |
+| postal_code     | string  | null: false |
+| prefecture_id   | integer | null: false |
 | city            | string  | null: false |
 | block_number    | string  | null: false |
-| apartment_name  | string  | unique: true |
-| phone_number    | integer | null: false |
+| apartment_name  | string  |             |
+| phone_number    | string  | null: false |
 
 ### Association
 
-- has_one  :users
-- has_one  :product_information
-- has_one  :purchase_records
+- belongs_to :purchase_records
