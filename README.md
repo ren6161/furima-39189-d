@@ -5,7 +5,7 @@
 | Column              | Type   | Options     |
 | ------------------  | ------ | ----------- |
 | user_name           | string | null: false |
-| email               | string | null: false |
+| email               | string | unique: true |
 | encrypted_password  | string | null: false |
 | last_name           | string | null: false |
 | first_name          | string | null: false |
@@ -15,10 +15,10 @@
 
 ### Association
 
-- has_many  :product_information
+- has_many  :product_informations
 - has_many  :purchase_records
 
-## product_information  テーブル
+## product_informations  テーブル
 
 | Column            | Type        | Options     |
 | ----------------- | ----------- | ----------- |
@@ -34,35 +34,34 @@
 
 ### Association
 
-- belongs_to :users
-- has_one    :purchase_records
+- belongs_to :user
+- has_one    :purchase_record
 
 ## purchase_records  テーブル
 
-| Column              | Type     | Options                        |
-| ------------------  | -------- | ------------------------------ |
-| purchaser           | string   | null: false, foreign_key: true |
-| products_purchased  | string   | null: false, foreign_key: true |
-| deliver_status      | string   | null: false |
-| days_of_purchase    | datetime | null: false |
-
+| Column              | Type       | Options                       |
+| ------------------  | --------   | ----------------------------- |
+| user                | references | null: false,foreign_key: true |
+| product_information | references | null: false,foreign_key: true |
 ### Association
 
-- belongs_to  :users
+- belongs_to  :user
 - belongs_to  :product_information
 - has_one     :shipping_address
 
-## shipping_address  テーブル
+## shipping_addresses  テーブル
 
 | Column          | Type    | Options                        |
 | --------------  | ------- | ------------------------------ |
 | postal_code     | string  | null: false |
-| prefecture_id   | integer | null: false |
+| shipping_area_id | integer | null: false |
 | city            | string  | null: false |
 | block_number    | string  | null: false |
 | apartment_name  | string  |             |
 | phone_number    | string  | null: false |
+| user            | references | null: false,foreign_key: true |
+| product_information | references | null: false,foreign_key: true |
 
 ### Association
 
-- belongs_to :purchase_records
+- belongs_to :purchase_record
