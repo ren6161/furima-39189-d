@@ -14,11 +14,11 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
   validates :password, format: { with: VALID_PASSWORD_REGEX }
 
-  VALID_NAME_REGEX =/\A[ぁ-んァ-ン一-龥々]+\z/
+  VALID_NAME_REGEX =/\A[ぁ-んァ-ヶ一-龥々ー]+\z/
   validates :last_name, format: { with: VALID_NAME_REGEX, message: 'Full-width characters.' }
   validates :first_name, format: { with: VALID_NAME_REGEX, message: 'Full-width characters.' }
 
-  KATAKANA_REGEXP = /\A[\p{katakana}\u{30fc}]+\z/
+  KATAKANA_REGEXP = /\A[ァ-ヶー]+\z/
   validates :last_name_kana, format: { with: KATAKANA_REGEXP }
   validates :first_name_kana, format: { with: KATAKANA_REGEXP }
 
