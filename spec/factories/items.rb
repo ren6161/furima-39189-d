@@ -3,11 +3,11 @@ FactoryBot.define do
     association :user
     name { Faker::Name.name }
     description { Faker::Lorem.sentence }
-    category_id { Faker::Number.between(from: 1, to: 10) }
-    condition_id { Faker::Number.between(from: 1, to: 6) }
-    shipping_cost_id { Faker::Number.between(from: 1, to: 2) }
-    shipping_area_id { Faker::Number.between(from: 1, to: 47) }
-    days_to_ship_id { Faker::Number.between(from: 1, to: 3) }
+    category_id { Faker::Number.between(from: 2, to: 11) }
+    condition_id { Faker::Number.between(from: 2, to: 7) }
+    shipping_cost_id { Faker::Number.between(from: 2, to: 3) }
+    shipping_area_id { Faker::Number.between(from: 2, to: 48) }
+    days_to_ship_id { Faker::Number.between(from: 2, to: 4) }
     price { Faker::Number.between(from: 300, to: 9_999_999) }
 
     after(:build) do |item|
