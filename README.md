@@ -18,7 +18,7 @@
 - has_many  :product_informations
 - has_many  :purchase_records
 
-## product_informations  テーブル
+## items  テーブル
 
 | Column            | Type        | Options     |
 | ----------------- | ----------- | ----------- |
