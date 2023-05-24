@@ -15,8 +15,8 @@
 
 ### Association
 
-- has_many  :product_informations
-- has_many  :purchase_records
+- has_many  :items
+- has_many  :orders
 
 ## items  テーブル
 
@@ -35,18 +35,18 @@
 ### Association
 
 - belongs_to :user
-- has_one    :purchase_record
+- has_one    :orders
 
-## purchase_records  テーブル
+## orders テーブル
 
 | Column              | Type       | Options                       |
 | ------------------  | --------   | ----------------------------- |
 | user                | references | null: false,foreign_key: true |
-| product_information | references | null: false,foreign_key: true |
+| item                | references | null: false,foreign_key: true |
 ### Association
 
 - belongs_to  :user
-- belongs_to  :product_information
+- belongs_to  :items
 - has_one     :shipping_address
 
 ## shipping_addresses  テーブル
