@@ -23,7 +23,7 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form).to be_valid
       end
       it '都道府県が「---」以外かつ空でなければ保存できる' do
-        @order_form.shipping_area_id = 1
+        @order_form.shipping_area_id = 2
         expect(@order_form).to be_valid
       end
       it '市区町村が空でなければ保存できる' do
@@ -66,7 +66,7 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県が「---」だと保存できないこと' do
-        @order_form.shipping_area_id = 0
+        @order_form.shipping_area_id = 1
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Shipping area can't be blank")
       end
