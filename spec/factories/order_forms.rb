@@ -8,6 +8,6 @@ FactoryBot.define do
     block_number { Faker::Address.street_address }
     apartment_name { Faker::Address.street_address }
     phone_number { Faker::Number.decimal_part(digits: 11) }
-    #token { Faker::Internet.password(min_length: 20, max_length: 30) }
+    token { Faker::Internet.password(min_length: 20, max_length: 30) }
   end
 end
